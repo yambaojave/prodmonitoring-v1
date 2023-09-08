@@ -1,7 +1,7 @@
-"use client"
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { MuiNavbar } from "./components/MuiNavbar";
+import styles from './page.module.css'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <MuiNavbar />
-        {children}
+        <main className={styles.main}>
+          {children}
+        </main>
+        
       </body>
     </html>
   );
