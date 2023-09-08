@@ -8,11 +8,11 @@ export const NAVBAR_MODULES = {
         { id: 6, label: "Environment", route: "/pages/environment" },
       ],
     Report : [
-        { id: 1, label: "MAN reports", route: "/pages/reports/manreport" },
-        { id: 1, label: "MACHINE reports", route: "/pages/reports/machinereport" },
-        { id: 1, label: "METHOD reports", route: "/pages/reports/methodreport" },
-        { id: 1, label: "MATERIAL reports", route: "/pages/reports/materialreport" },
-        { id: 1, label: "ENVIRONMENT reports", route: "/pages/reports/environmentreport" },
+        { id: 1, label: "MAN reports", route: "/pages/reports/report-man" },
+        { id: 2, label: "MACHINE reports", route: "/pages/reports/report-machine" },
+        { id: 3, label: "METHOD reports", route: "/pages/reports/report-method" },
+        { id: 4, label: "MATERIAL reports", route: "/pages/reports/report-material" },
+        { id: 5, label: "ENVIRONMENT reports", route: "/pages/reports/report-environment" },
     ],
     Utilities : [
         { id: 1, label: "Material Matrix", route: "/pages/sheet" },

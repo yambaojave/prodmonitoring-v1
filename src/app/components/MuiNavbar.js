@@ -63,7 +63,7 @@ export const MuiNavbar = () => {
             >
                 {
                     NAVBAR_MODULES[module].map((list) => (
-                        <Link href={list.route}><MenuItem key={list.id}>{list.label}</MenuItem></Link>
+                        <Link href={list.route} key={list.id}><MenuItem>{list.label}</MenuItem></Link>
                     ))
                 }
             </Menu>
@@ -135,8 +135,8 @@ export const MuiNavbar = () => {
               onClose={handleCloseUserMenu}
             >
               {USER_SETTINGS.map((setting) => (
-                <Link href={setting.route}>
-                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                <Link href={setting.route} key={setting.id}>
+                <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting.label}</Typography>
                 </MenuItem>
                 </Link>
