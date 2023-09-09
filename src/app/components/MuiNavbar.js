@@ -17,7 +17,7 @@ import { NAVBAR_MODULES, USER_SETTINGS  } from "../data/Navbar";
 
 
 export const MuiNavbar = () => {
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openMenus, setOpenMenus] = React.useState({});
 
@@ -63,7 +63,7 @@ export const MuiNavbar = () => {
             >
                 {
                     NAVBAR_MODULES[module].map((list) => (
-                        <Link href={list.route} key={list.id}><MenuItem>{list.label}</MenuItem></Link>
+                        <Link onClick={() => handleClose(module)} href={list.route} key={list.id}><MenuItem>{list.label}</MenuItem></Link>
                     ))
                 }
             </Menu>
@@ -135,8 +135,8 @@ export const MuiNavbar = () => {
               onClose={handleCloseUserMenu}
             >
               {USER_SETTINGS.map((setting) => (
-                <Link href={setting.route} key={setting.id}>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <Link onClick={handleCloseUserMenu} href={setting.route} key={setting.id}>
+                <MenuItem>
                   <Typography textAlign="center">{setting.label}</Typography>
                 </MenuItem>
                 </Link>

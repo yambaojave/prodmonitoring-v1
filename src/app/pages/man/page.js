@@ -1,19 +1,8 @@
 import { MuiPieChart } from '@/app/components/MuiPieChart';
-import { MuiTables } from '@/app/components/MuiTables'
+import { MuiDataTable } from '@/app/components/MuiDataTable';
 import { Box, Grid } from '@mui/material';
 import React from 'react'
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-  },
-];
 
 const rows = [
   { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
@@ -30,10 +19,14 @@ const rows = [
 
 
 export default function page() {
+
+  
+
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={8}>        
-        <MuiTables columns={columns} rows={rows}/>
+        <MuiDataTable rows={rows} columnName={"MAN"}/>
       </Grid>
       <Grid item xs={4}>
         <Box xs={{mt:3}}>
