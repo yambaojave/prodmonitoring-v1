@@ -1,7 +1,9 @@
-import { MuiDataTable } from '@/app/components/MuiDataTable';
-import { MuiPieChart } from '@/app/components/MuiPieChart';
+import dynamic from 'next/dynamic';
 import { Box, Grid } from '@mui/material';
 import React from 'react'
+
+const MuiPieChart = dynamic(() => import('@/app/components/MuiPieChart'));
+const MuiDataTable = dynamic(() => import('@/app/components/MuiDataTable'));
 
 const rows = [
   { id: 11, name: 'Snow',  age: 35 },

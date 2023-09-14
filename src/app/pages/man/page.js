@@ -1,7 +1,9 @@
-import { MuiPieChart } from '@/app/components/MuiPieChart';
-import { MuiDataTable } from '@/app/components/MuiDataTable';
+import dynamic from 'next/dynamic';
 import { Box, Grid } from '@mui/material';
 import React from 'react'
+
+const MuiPieChart = dynamic(() => import('@/app/components/MuiPieChart'));
+const MuiDataTable = dynamic(() => import('@/app/components/MuiDataTable'));
 
 
 const rows = [
@@ -19,9 +21,6 @@ const rows = [
 
 
 export default function page() {
-
-  
-
 
   return (
     <Grid container spacing={2}>

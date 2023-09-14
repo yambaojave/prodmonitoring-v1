@@ -10,7 +10,7 @@ const datas = [
     { label: 'CONDITION', value: 300, color: 'yellow' },
   ];
 
-export const MuiPieChart = () => {
+  export default function MuiPieChart() {
     // * For Hydration issue create a domLoad state 
     const [domLoaded, setDomLoaded] = React.useState(false);
 

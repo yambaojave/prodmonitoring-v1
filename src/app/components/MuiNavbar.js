@@ -9,17 +9,28 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import KeyIcon from '@mui/icons-material/Key';
 import jsphlogo from "../assets/main-logo.png";
 import Image from "next/image";
+import { SESSION_WORKGROUP_ID_KEY } from "../data/constants";
 import { Avatar, Fade, IconButton, Tooltip } from "@mui/material";
-import { NAVBAR_MODULES, USER_SETTINGS  } from "../data/Navbar";
-
-
+import { NAVBAR_MODULES, USER_SETTINGS } from "../data/Navbar";
+import { Form, InputGroup } from "react-bootstrap";
 
 export const MuiNavbar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openMenus, setOpenMenus] = React.useState({});
+  const [workGroupSessionKey, setWorkGroupSessionKey] = React.useState("");
+
+  React.useEffect(() => {
+    const storedValue = sessionStorage.getItem(SESSION_WORKGROUP_ID_KEY); // to be change to const variables
+
+    if(storedValue){
+      setWorkGroupSessionKey(storedValue);
+    }
+  }, [])
+
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -46,30 +57,35 @@ export const MuiNavbar = () => {
   };
 
 
+
   // * List all the modules and menu
   const ModuleMenu = () => {
-    return (
-        Object.keys(NAVBAR_MODULES).map((module) => (
-            <Menu
-            id={`menu-${module}`}
-            MenuListProps={{
-            'aria-labelledby': 'fade-button',
-            }}
-            anchorEl={anchorEl}
-            open={openMenus[module] || false}
-            onClose={() => handleClose(module)}
-            TransitionComponent={Fade}
-            key={module}
-            >
-                {
-                    NAVBAR_MODULES[module].map((list) => (
-                        <Link onClick={() => handleClose(module)} href={list.route} key={list.id}><MenuItem>{list.label}</MenuItem></Link>
-                    ))
-                }
-            </Menu>
-        ))
-    )
-  }
+    return Object.keys(NAVBAR_MODULES).map((module) => (
+      <Menu
+        id={`menu-${module}`}
+        MenuListProps={{
+          "aria-labelledby": "fade-button",
+        }}
+        anchorEl={anchorEl}
+        open={openMenus[module] || false}
+        onClose={() => handleClose(module)}
+        TransitionComponent={Fade}
+        key={module}
+      >
+        {NAVBAR_MODULES[module].map((list) => (
+          <Link
+            onClick={() => handleClose(module)}
+            href={list.route}
+            key={list.id}
+          >
+            <MenuItem>{list.label}</MenuItem>
+          </Link>
+        ))}
+      </Menu>
+    ));
+  };
+
+
 
   return (
     <AppBar position="static">
@@ -101,7 +117,7 @@ export const MuiNavbar = () => {
                 id="fade-button"
                 aria-controls={openMenus ? `menu-${module}` : undefined}
                 aria-haspopup="true"
-                aria-expanded={openMenus ? 'true' : undefined}
+                aria-expanded={openMenus ? "true" : undefined}
                 onClick={(event) => handleClick(event, module)}
                 key={module}
                 sx={{ my: 2, color: "white", display: "block" }}
@@ -112,7 +128,17 @@ export const MuiNavbar = () => {
             <ModuleMenu />
           </Box>
 
-           <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, mr: 5 }}>
+            <InputGroup>
+              <InputGroup.Text><KeyIcon /></InputGroup.Text>
+              <Form.Control
+                placeholder="Work Group ID"
+                disabled
+                value={workGroupSessionKey}
+              />
+            </InputGroup>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open user settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -135,15 +161,18 @@ export const MuiNavbar = () => {
               onClose={handleCloseUserMenu}
             >
               {USER_SETTINGS.map((setting) => (
-                <Link onClick={handleCloseUserMenu} href={setting.route} key={setting.id}>
-                <MenuItem>
-                  <Typography textAlign="center">{setting.label}</Typography>
-                </MenuItem>
+                <Link
+                  onClick={handleCloseUserMenu}
+                  href={setting.route}
+                  key={setting.id}
+                >
+                  <MenuItem>
+                    <Typography textAlign="center">{setting.label}</Typography>
+                  </MenuItem>
                 </Link>
               ))}
             </Menu>
-          </Box>    
-
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
