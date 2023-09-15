@@ -19,7 +19,7 @@ import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutl
 import SystemUpdateAltOutlinedIcon from '@mui/icons-material/SystemUpdateAltOutlined';
 import LibraryAddCheckOutlinedIcon from '@mui/icons-material/LibraryAddCheckOutlined';
 
-export default function JuiCard({latestWorkGroup}) {
+export default function JuiCardWorkGroupDetail({latestWorkGroup}) {
 
   return (
     <Card

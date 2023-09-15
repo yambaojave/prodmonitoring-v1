@@ -3,3 +3,4 @@ export const SESSION_HEADER_ID_KEY = 'HEADER_ID'
 export const SESSION_MODEL_KEY = 'MODEL'
 export const SESSION_LINE_KEY = 'LINE'
 
+export const STATUS_LIST = ['OK', 'NOT OK', 'WITH CONDITION'];

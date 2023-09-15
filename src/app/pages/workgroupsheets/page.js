@@ -6,7 +6,7 @@ import JuiLoading from '@/app/components/JuiLoading';
 import { Card, CardContent, Divider, Typography } from '@mui/joy';
 import { InfoOutlined } from '@mui/icons-material';
 
-const JuiCard = dynamic(() => import('@/app/components/JuiCard'),
+const JuiCardWorkGroupDetail = dynamic(() => import('@/app/components/JuiCardWorkGroupDetail'),
 {
   loading: () => <JuiLoading />,
 });
@@ -115,7 +115,7 @@ export default function page() {
       <Grid container spacing={2} className='p-3'>
       <Grid item xs={4}>
         {/* JuiCard to be change to a seperate component for creating for sheet */}
-        <JuiCard latestWorkGroup={latestWorkGroup}/> 
+        <JuiCardWorkGroupDetail latestWorkGroup={latestWorkGroup}/> 
 
       </Grid>
       <Grid item xs={8}>
