@@ -17,6 +17,8 @@ export const NAVBAR_MODULES = {
     ],
     Utilities : [
         { id: 1, label: "Material Matrix", route: "/pages/sheet" },
+        { id: 1, label: "Method Matrix", route: "/pages/sheet" },
+        { id: 1, label: "Daily Planning", route: "/pages/sheet" },
     ],
 };
 

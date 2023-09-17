@@ -88,7 +88,7 @@ export const MuiNavbar = () => {
 
 
   return (
-    <AppBar position="static">
+    <AppBar style={{position: 'fixed'}}>
       <Container maxWidth="">
         <Toolbar disableGutters>
           <Image alt="logo" src={jsphlogo} />

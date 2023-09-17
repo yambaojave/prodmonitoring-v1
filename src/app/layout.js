@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+   
         <MuiNavbar />
+
         <main className={styles.main}>
           {children}
         </main>
