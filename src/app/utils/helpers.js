@@ -2,7 +2,7 @@ import {
   STATUS
 } from "../data/constants";
 
-export function pieCommute(data) {
+export const pieCommute = (data) => {
   const pieData = [];
 
   STATUS.forEach(list => {
@@ -35,3 +35,16 @@ export function pieCommute(data) {
   return pieData;
 }
 
+
+export const getSessionData = (key) => {
+  try{
+    if(typeof window !== 'undefined' && window.sessionStorage){
+      const data = sessionStorage.getItem(key);
+      return data;
+    }
+  }
+  catch(err){
+    console.log(err);
+    return null;
+  }
+}

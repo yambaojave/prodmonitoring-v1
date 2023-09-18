@@ -17,6 +17,7 @@
     "@mui/x-charts": "^6.0.0-alpha.10",
     "@mui/x-data-grid": "^6.12.1",
     "bootstrap": "^5.3.1",
+    "dotenv": "^16.3.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",

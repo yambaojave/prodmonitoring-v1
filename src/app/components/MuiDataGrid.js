@@ -134,6 +134,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
         if (isInEditMode) {
           return [
             <GridActionsCellItem
+              key={`save-${id}`}
               icon={<SaveIcon />}
               label="Save"
               sx={{
@@ -142,6 +143,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
+              key={`cancel-${id}`}
               icon={<CancelIcon />}
               label="Cancel"
               className="textPrimary"
@@ -153,6 +155,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
 
         return [
           <GridActionsCellItem
+          key={`edit-${id}`}
             icon={<EditIcon />}
             label="Edit"
             className="textPrimary"
@@ -160,6 +163,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
             color="inherit"
           />,
           <GridActionsCellItem
+            key={`trainee-${id}`}
             icon={<PeopleAltIcon />}
             label="Edit"
             className="textPrimary"
@@ -168,6 +172,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
             color="inherit"
           />,
           <GridActionsCellItem
+            key={`replacement-${id}`}
             icon={<AssignmentIndIcon />}
             label="Edit"
             className="textPrimary"
@@ -234,6 +239,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
         if (isInEditMode) {
           return [
             <GridActionsCellItem
+              key={`save-${id}`}
               icon={<SaveIcon />}
               label="Save"
               sx={{
@@ -242,6 +248,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
               onClick={handleSaveClick(id)}
             />,
             <GridActionsCellItem
+              key={`cancel-${id}`}
               icon={<CancelIcon />}
               label="Cancel"
               className="textPrimary"
@@ -253,26 +260,14 @@ export default function MuiDataGrid({ rowsData, columnName }) {
 
         return [
           <GridActionsCellItem
+            key={`edit-${id}`}
             icon={<EditIcon />}
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(id)}
             color="inherit"
           />,
-          <GridActionsCellItem
-            icon={<PeopleAltIcon />}
-            label="Edit"
-            className="textPrimary"
-            onClick={handleEditClick(id)}
-            color="inherit"
-          />,
-          <GridActionsCellItem
-            icon={<AssignmentIndIcon />}
-            label="Edit"
-            className="textPrimary"
-            onClick={handleEditClick(id)}
-            color="inherit"
-          />,
+
         ];
       },
     },
