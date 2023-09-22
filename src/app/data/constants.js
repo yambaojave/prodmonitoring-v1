@@ -4,6 +4,8 @@ export const SESSION_WORKGROUP_ID_KEY = 'WORKGROUP_ID'
 export const SESSION_HEADER_ID_KEY = 'HEADER_ID'
 export const SESSION_MODEL_KEY = 'MODEL'
 export const SESSION_LINE_KEY = 'LINE'
+export const SESSION_TOKEN = 'TOKEN'
+
 
 // export const STATUS_LIST = ['OK', 'NOT OK', 'WITH CONDITION'];
 // export const STATUS_OK = 'OK'

@@ -314,7 +314,7 @@ export default function MuiDataGrid({ rowsData, columnName }) {
       headerClassName: "super-app-theme--header",
     },
     {
-      field: "componentItem",
+      field: "component",
       headerName: "Component Item",
       width: 100,
       headerClassName: "super-app-theme--header",

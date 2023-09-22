@@ -1,8 +1,12 @@
+"use client"
 import "./globals.css";
 // import { Inter } from "next/font/google";
 import { MuiNavbar } from "./components/MuiNavbar";
 import styles from './page.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { usePathname } from 'next/navigation'
+import React from "react";
+import { useRouter } from 'next/navigation'
 
 
 
@@ -14,20 +18,30 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const router = useRouter();
+  const pathname  = usePathname();
+  const routesWithoutNavbar = ['/pages/useraccess', '/'];
+  const showNavbar = !routesWithoutNavbar.includes(pathname);
 
+  React.useEffect(() => {
+    const token = sessionStorage.getItem('TOKEN');
+    if (!token) {
+      // If the token does not exist, redirect to the login page
+      return router.push('/pages/useraccess');
+    }
+
+  }, [router])
 
   return (
     <html lang="en">
       <body>
-   
-        <MuiNavbar />
+        {  showNavbar && <MuiNavbar /> }
 
         <main className={styles.main}>
 
-            {children}
+            { children }
 
         </main>
-        
       </body>
     </html>
   );

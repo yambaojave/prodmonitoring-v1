@@ -6,8 +6,9 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import { setSessionData } from "../utils/validationUtils";
+import { postDataProvider } from "../services/HeaderAPI";
 
-const columnWorkGroup = [
+const columns = [
   {
     field: "id",
     headerName: "ID",
@@ -78,110 +79,18 @@ const columnWorkGroup = [
   },
 ];
 
-const columnMan = [
-  // { field: 'id', headerName: 'ID', width: 70},
-  {
-    field: "id",
-    headerName: "ID",
-    width: 100,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "employeeId",
-    headerName: "Employee ID",
-    width: 100,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "name",
-    headerName: "Name",
-    width: 200,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 90,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "remarks",
-    headerName: "Remarks",
-    width: 300,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "convertDate",
-    headerName: "Date Created",
-    width: 200,
-    headerClassName: "super-app-theme--header",
-  },
-  {
-    field: "action",
-    headerName: "Action",
-    width: 300,
-    headerClassName: "super-app-theme--header",
-    renderCell: (params) => (
-      <div>
-        <Button
-          color="success"
-          variant="contained"
-          onClick={() => handleButtonClick(params.row.id)}
-        >
-          <BorderColorIcon />
-        </Button>
-        <Button
-          color="error"
-          variant="contained"
-          onClick={() => handleButtonClick(params.row.id)}
-        >
-          <PeopleAltIcon />
-        </Button>
-        <Button
-          color="info"
-          variant="contained"
-          onClick={() => handleButtonClick(params.row.id)}
-        >
-          <AssignmentIndIcon />
-        </Button>
-      </div>
-    ),
-  },
-];
+const selectWorkGroup = async (params) => {
+  // console.log(params);
 
-const columnMachine = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "name", width: 130 },
-  {
-    field: "action",
-    headerName: "Action",
-    width: 300,
-    renderCell: (params) => (
-      <div>
-        <Button
-          color="success"
-          variant="contained"
-          onClick={() => handleButtonClick(params.row.id)}
-        >
-          <BorderColorIcon />
-        </Button>
-      </div>
-    ),
-  },
-];
+  const response = await postDataProvider(params.id)
 
-function handleButtonClick(id) {
-  alert(`Button clicked for ID ${id}`);
-  // Add your custom logic here
-}
 
-function selectWorkGroup(params) {
-  if(setSessionData(params)){
+  if(setSessionData(response.headerId, params.workGroupId)){
     window.location.reload(); 
   }
 }
 
-export default function MuiDataTable({ rows, columnName }) {
+export default function MuiDataTable({ rows }) {
   const [filter, setFilter] = React.useState('');
   const [myState, setMyState] = React.useState(rows);
 
@@ -205,22 +114,6 @@ export default function MuiDataTable({ rows, columnName }) {
       const workGroupIdString = String(item.workGroupId);
       return workGroupIdString.includes(filter);
     });
-  }
-
-
-  let columns;
-  switch (columnName) {
-    case "MAN":
-      columns = columnMan;
-      break;
-    case "MACHINE":
-      columns = columnMachine;
-      break;
-    case "WORKGROUP":
-      columns = columnWorkGroup;
-      break;
-    default:
-      columns = [];
   }
 
   return (

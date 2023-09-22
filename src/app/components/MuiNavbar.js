@@ -17,7 +17,7 @@ import { Avatar, Fade, IconButton, Tooltip } from "@mui/material";
 import { NAVBAR_MODULES, USER_SETTINGS } from "../data/Navbar";
 import { Form, InputGroup } from "react-bootstrap";
 
-export const MuiNavbar = () => {
+export const MuiNavbar = ({workgroup}) => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openMenus, setOpenMenus] = React.useState({});
@@ -134,7 +134,7 @@ export const MuiNavbar = () => {
               <Form.Control
                 placeholder="Work Group ID"
                 disabled
-                value={workGroupSessionKey}
+                value={workgroup || workGroupSessionKey}
               />
             </InputGroup>
           </Box>
