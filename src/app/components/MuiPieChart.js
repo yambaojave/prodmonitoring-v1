@@ -10,7 +10,7 @@ import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 //   { label: "CON", name: "WITH CONDITION", value: 1, color: "yellow" },
 // ];
 
-export default function MuiPieChart({datas}) {
+export default function MuiPieChart({datas, page}) {
   // * For Hydration issue create a domLoad state
   const [domLoaded, setDomLoaded] = React.useState(false);
 
@@ -28,10 +28,10 @@ export default function MuiPieChart({datas}) {
       {domLoaded && (
         <Stack direction="row">
           <div className="mx-auto mt-3">
-            <PieChart width={400} height={400}>
+            <PieChart width={300} height={ page === "MONITORING" ? 300 : 400 }>
               <Pie
                 data={datas}
-                cx={200}
+                cx={150}
                 cy={150}
                 innerRadius={60}
                 outerRadius={80}
@@ -46,7 +46,7 @@ export default function MuiPieChart({datas}) {
               </Pie>
               {/* <Tooltip formatter={(value, name) => name}/> */}
 
-              <Legend payload={customLegend} layout="vertical"/>
+              { page === "MONITORING" || <Legend payload={customLegend} layout="vertical"/> }
             </PieChart>
           </div>
         </Stack>

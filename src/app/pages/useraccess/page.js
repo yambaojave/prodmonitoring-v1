@@ -39,6 +39,7 @@ export default function Page() {
   const router = useRouter();
   const [type, setType] = React.useState('4M/1E');
 
+
   const handleChange = (event) => {
     setType(event.target.value);
   };
@@ -46,6 +47,12 @@ export default function Page() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    if(data.get('line') !== ""){
+      return router.push('/pages/monitoringView')
+    }
+
+
     login({
         Username : data.get('username'),
         Password : data.get('password'),
@@ -102,7 +109,8 @@ export default function Page() {
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <FormControl sx={{ m: 1, minWidth: 360 }}>
+              <div>
+              <FormControl sx={{ m: 1, minWidth: '100%' }} className='m-0'>
                 <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
                 <Select
                     labelId="demo-simple-select-helper-label"
@@ -114,7 +122,9 @@ export default function Page() {
                     <MenuItem value="4M/1E">4M/1E</MenuItem>
                     <MenuItem value="MONITORING">MONITORING</MenuItem>
                 </Select>
-            </FormControl>
+              </FormControl>
+              </div>
+            
 
             {
                 type === "4M/1E" ?
@@ -148,7 +158,6 @@ export default function Page() {
                         name="line"
                         label="Line"
                         id="line"
-                        
                         autoFocus
                     />
                 : ""

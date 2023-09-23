@@ -20,17 +20,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   const router = useRouter();
   const pathname  = usePathname();
-  const routesWithoutNavbar = ['/pages/useraccess', '/'];
+  const routesWithoutNavbar = ['/pages/useraccess', '/', '/pages/monitoringView'];
   const showNavbar = !routesWithoutNavbar.includes(pathname);
 
-  React.useEffect(() => {
-    const token = sessionStorage.getItem('TOKEN');
-    if (!token) {
-      // If the token does not exist, redirect to the login page
-      return router.push('/pages/useraccess');
-    }
+  // React.useEffect(() => {
+  //   const token = sessionStorage.getItem('TOKEN');
+  //   if (!token) {
+  //     // If the token does not exist, redirect to the login page
+  //     return router.push('/pages/useraccess');
+  //   }
 
-  }, [router])
+  // }, [router])
 
   return (
     <html lang="en">
